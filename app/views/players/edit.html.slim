@@ -1,0 +1,9 @@
+h2 Edit Player
+
+= link_to 'Back to Show', player_path(@player)
+
+= form_for @player do |f|
+  = f.label :name
+  = f.text_field :name
+
+  = f.submit
