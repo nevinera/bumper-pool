@@ -1,7 +1,5 @@
 h2 All Players
 
-= link_to 'New Player', new_player_path
-
 ul
   - @players.each do |p|
     li= link_to p.name, p

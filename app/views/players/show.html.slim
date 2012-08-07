@@ -1,9 +1,8 @@
 h2 Player Details
 
-= link_to 'Back to Index', players_path
-
 dl
   dt Name
   dd= @player.name
 
-= link_to 'Edit', edit_player_path(@player)
+- content_for :actions do
+  li= link_to 'Edit', edit_player_path(@player)

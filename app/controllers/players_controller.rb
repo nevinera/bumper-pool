@@ -1,4 +1,13 @@
 class PlayersController < ApplicationController
+
+  def sidebar?
+    true
+  end
+  def sidebar
+    'players/sidebar'
+  end
+
+
   def index
     @players = Player.all
   end

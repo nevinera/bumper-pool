@@ -1,9 +1,8 @@
 h2 New Player
 
-= link_to 'Back to Index', players_path
-
 = form_for @player do |f|
   = f.label :name
   = f.text_field :name
 
-  = f.submit
+  br
+  = f.submit 'Create', :class => 'btn'

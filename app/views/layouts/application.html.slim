@@ -1,0 +1,35 @@
+doctype html
+
+html
+  head
+    title= content_for?(:title) ? yield(:title) : "Pool"
+
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", :media => "all"
+
+    a(href="images/favicon.ico" rel="shortcut icon")
+
+  body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.brand(href="#") Pool
+
+          .container.nav-collapse
+            ul.nav
+              li= link_to 'Week', ''
+              li= link_to 'All Time', ''
+              li= link_to 'Games', ''
+              li= link_to 'Players', players_path
+
+    .container
+      .content
+        .row
+          .span9
+            == yield
+
+          - if controller.sidebar?
+            == render :partial => controller.sidebar
+
+    = javascript_include_tag "application"
+

@@ -19,4 +19,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'twitter-bootstrap-rails',
+  :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git',
+  :branch => 'static'
 gem 'slim'
