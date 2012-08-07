@@ -1,0 +1,10 @@
+.span3
+  .well.sidebar-nav
+    h3 Games
+    ul.nav.nav-list
+    li= link_to 'View All Games', games_path
+    li= link_to 'Record Played Game', new_game_path
+
+    - if content_for? :actions
+      li.nav-header Actions
+      == content_for :actions
