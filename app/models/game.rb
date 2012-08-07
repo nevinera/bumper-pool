@@ -12,4 +12,16 @@ class Game < ActiveRecord::Base
   validates :played_on, :timeliness => { :type => :date }
   validates :winner, :presence => true
   validates :loser, :presence => true
+
+
+  def self.this_week
+    where(:week => Date.today.strftime("%G-%V"))
+  end
+
+  def winner_name
+    self.winner.try(:name) || '[Redacted]'
+  end
+  def loser_name
+    self.loser.try(:name) || '[Redacted]'
+  end
 end
