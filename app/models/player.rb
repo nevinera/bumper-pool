@@ -3,4 +3,6 @@ class Player < ActiveRecord::Base
 
   has_many :triumphs, :class_name => 'Game', :foreign_key => 'winner_id'
   has_many :losses,   :class_name => 'Game', :foreign_key => 'loser_id'
+
+  validates :name, :uniqueness => true
 end

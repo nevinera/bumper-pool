@@ -8,4 +8,8 @@ class Game < ActiveRecord::Base
   def set_week
     self.week = self.played_on.strftime('%G-%V')
   end
+
+  validates :played_on, :timeliness => { :type => :date }
+  validates :winner, :presence => true
+  validates :loser, :presence => true
 end

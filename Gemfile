@@ -23,3 +23,5 @@ gem 'twitter-bootstrap-rails',
   :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git',
   :branch => 'static'
 gem 'slim'
+
+gem 'validates_timeliness'
