@@ -26,3 +26,4 @@ gem 'slim'
 
 gem 'validates_timeliness'
 gem 'will_paginate'
+gem 'heroku'
