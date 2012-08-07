@@ -15,9 +15,19 @@ class GamesController < ApplicationController
   end
 
   def new
+    @game = Game.new
+    @players = Player.order('name asc').all
   end
 
   def create
+    @game = Game.new(params[:game])
+
+    if @game.save
+      redirect_to @game
+    else
+      @players = Player.order('name asc').all
+      render :new
+    end
   end
 
   def edit
