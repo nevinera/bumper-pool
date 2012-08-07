@@ -11,10 +11,21 @@ class GamesController < ApplicationController
     @games = Game.
       includes(:winner, :loser).
       order('played_on desc, created_at desc').
-      paginate(:page => params[:page], :per_page => 50).
-      all
+      paginate(:page => params[:page], :per_page => 50)
 
     @players = Player.all.sort_by(&:ratio).reverse
+  end
+
+  def weekly
+    @week = params[:week] || current_week
+
+    @games = Game.
+      includes(:winner, :loser).
+      order('played_on desc, created_at desc').
+      in_week(@week).
+      paginate(:page => params[:page], :per_page => 50)
+
+    @players = Player.all.sort_by(&:ratio_weekly).reverse
   end
 
   def show

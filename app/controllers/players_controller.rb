@@ -14,6 +14,11 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find params[:id]
+    @games = Game.
+      includes(:winner, :loser).
+      played_by(@player).
+      order('played_on desc, created_at desc').
+      paginate(:page => params[:page], :per_page => 50)
   end
 
   def new

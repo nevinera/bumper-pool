@@ -17,6 +17,13 @@ class Game < ActiveRecord::Base
   def self.this_week
     where(:week => Date.today.strftime("%G-%V"))
   end
+  def self.in_week(week)
+    where(:week => week)
+  end
+
+  def self.played_by(player)
+    where('(winner_id = ? OR loser_id = ?)', player.id, player.id)
+  end
 
   def winner_name
     self.winner.try(:name) || '[Redacted]'

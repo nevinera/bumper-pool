@@ -1,0 +1,49 @@
+h2 Weekly Games
+
+h3 Statistics
+
+table.table
+  tr
+    th Player
+    th Wins
+    th Losses
+    th Games
+    th Ratio
+    th
+  - @players.each do |p|
+    tr
+      td= p.name
+      td= p.wincount_weekly
+      td= p.losscount_weekly
+      td= p.gamecount_weekly
+      td= number_to_percentage 100*p.ratio_weekly, :precision => 0
+      td= link_to 'Details', player_path(p)
+
+
+h3 Games
+
+table.table
+  tr
+    th ID
+    th Date
+    th Winner
+    th Loser
+    th
+  - @games.each do |g|
+    tr
+      td= g.id
+      td= g.played_on
+      td= link_to g.winner_name, g.winner
+      td= link_to g.loser_name, g.loser
+      td= link_to 'Details', g
+
+= will_paginate @games, :class => 'apple_pagination'
+
+- content_for :actions do
+  li= link_to 'Previous Week', weekly_games_path(:week => week_before(@week))
+  - unless @week == current_week
+    li= link_to 'Later Week', weekly_games_path(:week => week_after(@week))
+    li= link_to 'Current Week', weekly_games_path
+
+
+

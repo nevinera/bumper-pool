@@ -1,33 +1,53 @@
-h2 Player Details
+h2 Player Details for #{@player.name}
 
-dl
-  dt Name
-  dd= @player.name
 
-  br
-  h4 Overall
+h4 Statistics (This Week)
+table.table
+  tr
+    th Wins
+    td= @player.wincount_weekly
+  tr
+    th Losses
+    td= @player.losscount_weekly
+  tr
+    th Games
+    td= @player.gamecount_weekly
+  tr
+    th Ratio
+    td= number_to_percentage(100*@player.ratio_weekly, :precision => 2)
 
-  dt Wins
-  dd= @player.triumphs.count
+h4 Statistics (Overall)
+table.table
+  tr
+    th Wins
+    td= @player.wincount
+  tr
+    th Losses
+    td= @player.losscount
+  tr
+    th Games
+    td= @player.gamecount
+  tr
+    th Ratio
+    td= number_to_percentage(100*@player.ratio, :precision => 2)
 
-  dt Losses
-  dd= @player.losses.count
+h4 Games
+table.table
+  tr
+    th ID
+    th Date
+    th Winner
+    th Loser
+    th
+  - @games.each do |g|
+    tr
+      td= g.id
+      td= g.played_on
+      td= link_to g.winner_name, g.winner
+      td= link_to g.loser_name, g.loser
+      td= link_to 'Details', g
 
-  dt Ratio
-  dd= number_to_percentage(100*@player.ratio, :precision => 2)
-
-  br
-  h4 This Week
-
-  dt Wins
-  dd= @player.triumphs.this_week.count
-
-  dt Losses
-  dd= @player.losses.this_week.count
-
-  dt Ratio
-  dd 55%
-
+= will_paginate @games, :class => 'apple_pagination'
 
 - content_for :actions do
   li= link_to 'Edit', edit_player_path(@player)
