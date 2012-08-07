@@ -25,3 +25,4 @@ gem 'twitter-bootstrap-rails',
 gem 'slim'
 
 gem 'validates_timeliness'
+gem 'will_paginate'

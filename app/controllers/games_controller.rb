@@ -8,7 +8,12 @@ class GamesController < ApplicationController
   end
 
   def index
-    @games = Game.includes(:winner, :loser).order('played_on desc, created_at desc').all
+    @games = Game.
+      includes(:winner, :loser).
+      order('played_on desc, created_at desc').
+      paginate(:page => params[:page], :per_page => 50).
+      all
+
   end
 
   def show

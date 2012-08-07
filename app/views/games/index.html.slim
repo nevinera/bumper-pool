@@ -14,3 +14,5 @@ table.table
       td= link_to g.winner_name, g.winner
       td= link_to g.loser_name, g.loser
       td= link_to 'Details', g
+
+= will_paginate @games, :class => 'apple_pagination'
