@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.7'
 gem 'thin'
 
-group :dev do
+group :development do
   gem 'sqlite3'
 end
 
