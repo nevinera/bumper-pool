@@ -4,5 +4,21 @@ dl
   dt Name
   dd= @player.name
 
+  hr
+
+  dt Wins (Total)
+  dd= @player.triumphs.count
+
+  dt Losses (Total)
+  dd= @player.losses.count
+
+  hr
+
+  dt Wins (This Week)
+  dd= @player.triumphs.this_week.count
+
+  dt Losses (This Week)
+  dd= @player.losses.this_week.count
+
 - content_for :actions do
   li= link_to 'Edit', edit_player_path(@player)
