@@ -1,0 +1,15 @@
+h2 Alter Game
+
+= form_for @game do |f|
+  = f.label :played_on
+  = f.text_field :played_on, :value => (@game.played_on || Date.today)
+
+  = f.label :winner_id, 'Winner'
+  = f.select :winner_id, options_for_select(['',nil] + @players.map{|p| [p.name, p.id]}, @game.winner_id)
+
+  = f.label :loser_id, 'Loser'
+  = f.select :loser_id, options_for_select(['',nil] + @players.map{|p| [p.name, p.id]}, @game.loser_id)
+
+  br
+  = f.submit 'Update', :class => 'btn'
+

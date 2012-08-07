@@ -6,9 +6,11 @@ table.table
     th Date
     th Winner
     th Loser
+    th
   - @games.each do |g|
     tr
-      td= link_to g.id, g
+      td= g.id
       td= g.played_on
       td= link_to g.winner_name, g.winner
       td= link_to g.loser_name, g.loser
+      td= link_to 'Details', g

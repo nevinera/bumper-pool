@@ -1,0 +1,18 @@
+h2 Game Details
+
+dl
+  dt Played On
+  dd= @game.played_on
+
+  dt Recorded At
+  dd= @game.created_at
+
+  dt Winner
+  dd= @game.winner_name
+
+  dt Loser
+  dd= @game.loser_name
+
+- content_for :actions do
+  li= link_to 'Edit', edit_game_path(@game)
+  li= link_to 'Destroy', game_path(@game), :method => :delete, :confirm => 'Un-record this game?'

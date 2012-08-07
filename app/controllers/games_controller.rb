@@ -12,6 +12,7 @@ class GamesController < ApplicationController
   end
 
   def show
+    @game = Game.find params[:id]
   end
 
   def new
@@ -31,11 +32,24 @@ class GamesController < ApplicationController
   end
 
   def edit
+    @game = Game.find params[:id]
+    @players = Player.order('name asc').all
   end
   
   def update
+    @game = Game.find params[:id]
+
+    if @game.update_attributes params[:game]
+      redirect_to @game
+    else
+      @players = Player.order('name asc').all
+      render :edit
+    end
   end
 
   def destroy
+    @game = Game.find params[:id]
+    @game.destroy
+    redirect_to games_path
   end
 end
