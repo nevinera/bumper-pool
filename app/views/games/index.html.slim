@@ -1,0 +1,14 @@
+h2 All Games
+
+table.table
+  tr
+    th ID
+    th Date
+    th Winner
+    th Loser
+  - @games.each do |g|
+    tr
+      td= link_to g.id, g
+      td= g.played_on
+      td= link_to g.winner_name, g.winner
+      td= link_to g.loser_name, g.loser

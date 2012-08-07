@@ -1,6 +1,7 @@
 Pool::Application.routes.draw do
 
   resources :players
+  resources :games
 
-  root :to => 'Players#index'
+  root :to => 'Games#index'
 end
