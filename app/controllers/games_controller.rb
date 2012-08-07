@@ -14,6 +14,7 @@ class GamesController < ApplicationController
       paginate(:page => params[:page], :per_page => 50).
       all
 
+    @players = Player.all.sort_by(&:ratio).reverse
   end
 
   def show

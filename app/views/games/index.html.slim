@@ -1,5 +1,27 @@
 h2 All Games
 
+h3 Statistics
+
+table.table
+  tr
+    th Player
+    th Wins
+    th Losses
+    th Games
+    th Ratio
+    th
+  - @players.each do |p|
+    tr
+      td= p.name
+      td= p.wincount
+      td= p.losscount
+      td= p.gamecount
+      td= number_to_percentage 100*p.ratio, :precision => 0
+      td= link_to 'Details', player_path(p)
+
+
+h3 Games
+
 table.table
   tr
     th ID

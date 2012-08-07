@@ -4,21 +4,30 @@ dl
   dt Name
   dd= @player.name
 
-  hr
+  br
+  h4 Overall
 
-  dt Wins (Total)
+  dt Wins
   dd= @player.triumphs.count
 
-  dt Losses (Total)
+  dt Losses
   dd= @player.losses.count
 
-  hr
+  dt Ratio
+  dd= number_to_percentage(100*@player.ratio, :precision => 2)
 
-  dt Wins (This Week)
+  br
+  h4 This Week
+
+  dt Wins
   dd= @player.triumphs.this_week.count
 
-  dt Losses (This Week)
+  dt Losses
   dd= @player.losses.this_week.count
+
+  dt Ratio
+  dd 55%
+
 
 - content_for :actions do
   li= link_to 'Edit', edit_player_path(@player)
