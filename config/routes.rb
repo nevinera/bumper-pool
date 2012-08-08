@@ -7,5 +7,5 @@ Pool::Application.routes.draw do
     end
   end
 
-  root :to => 'Games#index'
+  root :to => 'Games#weekly'
 end
