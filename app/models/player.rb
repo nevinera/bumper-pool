@@ -33,7 +33,7 @@ class Player < ActiveRecord::Base
     wincount_weekly + losscount_weekly
   end
   def ratio_weekly
-    if game_count_weekly > 0
+    if gamecount_weekly > 0
       wincount_weekly / gamecount_weekly.to_f
     else
       0.0
