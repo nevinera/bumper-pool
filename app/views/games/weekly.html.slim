@@ -13,10 +13,10 @@ table.table
   - @players.each do |p|
     tr
       td= p.name
-      td= p.wincount_weekly
-      td= p.losscount_weekly
-      td= p.gamecount_weekly
-      td= number_to_percentage 100*p.ratio_weekly, :precision => 0
+      td= p.wincount_weekly(@week)
+      td= p.losscount_weekly(@week)
+      td= p.gamecount_weekly(@week)
+      td= number_to_percentage 100*p.ratio_weekly(@week), :precision => 0
       td= link_to 'Details', player_path(p)
 
 

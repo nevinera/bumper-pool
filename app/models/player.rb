@@ -23,18 +23,22 @@ class Player < ActiveRecord::Base
     end
   end
 
-  def wincount_weekly
-    @_wincount_weekly ||= self.triumphs.this_week.count
+  def wincount_weekly(week=nil)
+    week ||= Date.today.strftime('%G-%V')
+    @_wincount_weekly ||= {}
+    @_wincount_weekly[week] ||= self.triumphs.this_week.count
   end
-  def losscount_weekly
-    @_losscount_weekly ||= self.losses.this_week.count
+  def losscount_weekly(week=nil)
+    week ||= Date.today.strftime('%G-%V')
+    @_losscount_weekly ||= {}
+    @_losscount_weekly[week] ||= self.losses.this_week.count
   end
-  def gamecount_weekly
-    wincount_weekly + losscount_weekly
+  def gamecount_weekly(week=nil)
+    wincount_weekly(week) + losscount_weekly(week)
   end
-  def ratio_weekly
-    if gamecount_weekly > 0
-      wincount_weekly / gamecount_weekly.to_f
+  def ratio_weekly(week=nil)
+    if gamecount_weekly(week) > 0
+      wincount_weekly(week) / gamecount_weekly(week).to_f
     else
       0.0
     end
