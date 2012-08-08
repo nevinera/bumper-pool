@@ -2,8 +2,8 @@
   .well.sidebar-nav
     h3 Players
     ul.nav.nav-list
-      li= link_to 'View All Players', players_path
       li= link_to 'Add New Player', new_player_path
+      li= link_to 'View All Players', players_path
 
       - if content_for? :actions
         li.nav-header Actions
