@@ -26,12 +26,12 @@ class Player < ActiveRecord::Base
   def wincount_weekly(week=nil)
     week ||= Date.today.strftime('%G-%V')
     @_wincount_weekly ||= {}
-    @_wincount_weekly[week] ||= self.triumphs.this_week.count
+    @_wincount_weekly[week] ||= self.triumphs.in_week(week).count
   end
   def losscount_weekly(week=nil)
     week ||= Date.today.strftime('%G-%V')
     @_losscount_weekly ||= {}
-    @_losscount_weekly[week] ||= self.losses.this_week.count
+    @_losscount_weekly[week] ||= self.losses.in_week(week).count
   end
   def gamecount_weekly(week=nil)
     wincount_weekly(week) + losscount_weekly(week)
