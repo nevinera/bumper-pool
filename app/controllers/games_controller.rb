@@ -25,7 +25,7 @@ class GamesController < ApplicationController
       in_week(@week).
       paginate(:page => params[:page], :per_page => 50)
 
-    @players = Player.all.sort_by(&:ratio_weekly).reverse
+    @players = Player.all.sort_by{|p| p.ratio_weekly(@week)}.reverse
   end
 
   def show
