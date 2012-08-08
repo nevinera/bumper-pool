@@ -22,8 +22,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'less-rails-bootstrap'
 gem 'slim'
+gem 'bootstrap-sass'
 
 gem 'validates_timeliness'
 gem 'will_paginate'
