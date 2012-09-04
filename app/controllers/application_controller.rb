@@ -32,6 +32,8 @@ class ApplicationController < ActionController::Base
       true
     elsif request.remote_ip.to_s == "74.95.29.209"
       true
+    elsif request.remote_ip.to_s == "24.178.101.154"
+      true
     else
       false
     end
